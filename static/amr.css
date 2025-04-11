@@ -16,7 +16,7 @@ body {
     background: white;
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 12px 30px rgba(254, 13, 13, 0.1);
     width: 80%;
     max-width: 900px;
   }
@@ -27,23 +27,23 @@ body {
   }
   
   .input-box h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
+    font-size: 45px;
+    margin-bottom: 50px;
     color: #111;
   }
   
   .input-box textarea {
     width: 100%;
-    height: 120px;
-    padding: 15px;
-    font-size: 16px;
+    height: 228px; /* <-- Increased from 120px */
+    padding: 18px;
+    font-size: 17px;
     border-radius: 10px;
     border: 1px solid #ccc;
     resize: none;
     box-sizing: border-box;
     margin-bottom: 15px;
-  }
-  
+}
+
   .input-box button {
     padding: 10px 20px;
     background-color: #444;
@@ -67,5 +67,32 @@ body {
     max-width: 100%;
     border-radius: 15px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  }
+  
+  .glow-submit {
+    position: relative;
+    overflow: hidden;
+    font-family: 'Barlow', sans-serif;
+    background-color: #222;
+    border: none;
+    color: #fff;
+    text-transform: uppercase;
+  }
+  
+  .glow-submit span {
+    pointer-events: none;
+  }
+  
+
+  .input-box h2 {
+    font-size: 45px;
+    margin-bottom: 20px;  /* was 50px */
+    color: #111;
+  }
+  
+  .input-box p {
+    margin-bottom: 30px;
+    font-size: 16px;
+    color: #555;
   }
   
