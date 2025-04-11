@@ -1,0 +1,50 @@
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv1D, MaxPooling1D, Bidirectional, LSTM, Dense, Dropout, Flatten
+from tensorflow.keras.optimizers import Adam
+
+# Load CSV file (make sure it's in the same directory or give the full path)
+df = pd.read_csv(r'C:\Users\uragu\OneDrive\Desktop\AMR_Bio\Data\protein2_dataset.csv')
+
+# Define amino acids
+AA = "ARNDCQEGHILKMFPSTWYV"  # 20 standard amino acids
+
+def one_hot_encode(sequence, max_len=200):
+    """One-hot encodes a protein sequence"""
+    enc = np.zeros((max_len, len(AA)))  # Create empty matrix
+    for i, aa in enumerate(sequence[:max_len]):  # Limit to max_len
+        if aa in AA:
+            enc[i, AA.index(aa)] = 1  # One-hot encode
+    return enc
+
+# One-hot encode all sequences
+X = np.array([one_hot_encode(seq) for seq in df["Sequence"]])
+y = df["Label"].values
+
+# Split the data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Build the CNN + BiLSTM model
+model = Sequential()
+model.add(Conv1D(filters=64, kernel_size=3, activation='relu', input_shape=(200, 20)))
+model.add(MaxPooling1D(pool_size=2))
+model.add(Bidirectional(LSTM(64, return_sequences=False)))
+model.add(Dropout(0.5))
+model.add(Dense(64, activation='relu'))
+model.add(Dense(1, activation='sigmoid'))  # Binary classification
+
+# Compile the model
+model.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy', metrics=['accuracy'])
+
+# Train the model
+model.fit(X_train, y_train, epochs=10, batch_size=32, validation_split=0.1)
+
+# Evaluate the model
+loss, accuracy = model.evaluate(X_test, y_test)
+print(f"Test Accuracy: {accuracy * 100:.2f}%")
+
+# Save model (optional)
+model.save("cnn_bilstm_amr_model.h5")
+a

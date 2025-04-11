@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Landing Page</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='landing.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='buttons/Glowonhover.css') }}">
+</head>
+<body>
+  <div class="landing-container">
+    <div class="page-title">AMR Predictor</div>
+
+    <div class="typing-container">
+      <span class="typing-tagline" id="tagline"></span>
+    </div>
+
+    <div class="button-wrapper">
+        <button class="glow-on-hover" onclick="location.href='/amr'">AMR Detection</button>
+        <button class="glow-on-hover" onclick="location.href='/virulence'">Protein Virulence</button>
+      </div>
+      
+  </div>
+
+  <script>
+    const text = "Decoding Resistance. Predicting Tomorrow.";
+    const tagline = document.getElementById("tagline");
+    let i = 0;
+    function typeLoop() {
+      if (i <= text.length) {
+        tagline.textContent = text.substring(0, i);
+        i++;
+        setTimeout(typeLoop, 75);
+      }
+    }
+    typeLoop();
+  </script>
+</body>
+</html>

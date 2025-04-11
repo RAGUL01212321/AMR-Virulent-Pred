@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Landing Page</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='landing.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='buttons/Glowonhover.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="landing-container">
+    <div class="page-title">AMR Predictor</div>
+
+    <!-- Typing animation container -->
+    <div class="typing-container">
+      <span class="typing-tagline" id="tagline"></span>
+    </div>
+
+    <!-- AMR Button -->
+    <div class="button-wrapper amr">
+      <button class="glow-on-hover white-border white-border-medium" onclick="location.href='/amr'">AMR Detection</button>
+    </div>
+
+    <!-- Virulence Button -->
+    <div class="button-wrapper virulence">
+      <button class="glow-on-hover white-border white-border-medium" onclick="location.href='/virulence'">Protein Virulence</button>
+    </div>
+  </div>
+
+  <!-- Typing animation script -->
+  <script>
+    const taglines = [
+      "Decoding Resistance. Predicting Tomorrow.",
+      "Your Genomic AI Assistant.",
+      "Accelerating AMR Detection with Precision."
+    ];
+    const taglineEl = document.getElementById("tagline");
+    let i = 0, j = 0, current = "", isDeleting = false;
+
+    function typeEffect() {
+      current = taglines[j];
+      taglineEl.textContent = current.substring(0, i);
+
+      if (!isDeleting) {
+        i++;
+        if (i > current.length) {
+          isDeleting = true;
+          setTimeout(typeEffect, 1500);
+          return;
+        }
+      } else {
+        i--;
+        if (i === 0) {
+          isDeleting = false;
+          j = (j + 1) % taglines.length;
+        }
+      }
+      setTimeout(typeEffect, isDeleting ? 40 : 75);
+    }
+
+    typeEffect();
+  </script>
+
+</body>
+</html>
