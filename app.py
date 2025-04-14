@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from model_utils import predict_amr
 
 app = Flask(__name__)
 
@@ -6,22 +7,18 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-@app.route('/amr', methods=['GET', 'POST'])
+@app.route('/amr', methods=['GET'])
 def amr_page():
-    if request.method == 'POST':
-        # Handle uploaded file or sequence
-        file = request.files.get('file')
-        sequence = request.form.get('sequence')
-        
-        # Placeholder logic
-        result = "Prediction results coming soon!"
-        return render_template('amr.html', result=result)
-    
-    return render_template('amr.html')  # Just show the form on GET
+    return render_template('amr.html')
 
-@app.route('/virulence')
-def virulence_page():
-    return "Protein Virulence Page Coming Soon!"
+@app.route('/amr_result', methods=['POST'])
+def amr_result():
+    sequence = request.form.get('sequence', '')
+    if not sequence:
+        return render_template('amr_result.html', prediction="No sequence provided.")
+    
+    result = predict_amr(sequence)
+    return render_template('amr_result.html', prediction=result)
 
 if __name__ == "__main__":
     app.run(debug=True)

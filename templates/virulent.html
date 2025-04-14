@@ -1,13 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Protein Virulence</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='virulent.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Protein Virulence Predictor</h1>
-        <p>Coming soon...</p>
-    </div>
+    <div class="amr-container">
+        <div class="input-box">
+            <h2>Protein Virulence</h2>
+
+            <form action="/protein_virulence" method="post" enctype="multipart/form-data">
+                <textarea name="sequence" placeholder="Enter the Protein or Gene Sequence" required></textarea>
+
+                <!-- Custom glow-on-hover button -->
+                <button type="submit" class="glow-on-hover">
+                    <i class="fa fa-dna"></i> Submit
+                </button>
+            </form>
+
+            {% if result %}     
+                <div class="result-text">
+                    {{ result }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="image-box">
+            <img src="{{ url_for('static', filename='images/Image-empty-state.jpeg') }}" alt="DNA Image">
+        </div>
+    </div>  
 </body>
 </html>

@@ -9,26 +9,28 @@
 </head>
 <body>
 
-  <div class="landing-container">
-    <div class="page-title">AMR Predictor</div>
+  <div class="outer-container">
+    <div class="landing-container">
+      <!-- Page title -->
+      <div class="page-title">AMR-Virulent-Pred</div>
 
-    <!-- Typing animation container -->
-    <div class="typing-container">
-      <span class="typing-tagline" id="tagline"></span>
-    </div>
+      <!-- Typing animation tagline -->
+      <div class="typing-container">
+        <span class="typing-tagline" id="tagline"></span>
+      </div>
 
-    <!-- AMR Button -->
-    <div class="button-wrapper amr">
-      <button class="glow-on-hover white-border white-border-medium" onclick="location.href='/amr'">AMR Detection</button>
-    </div>
+      <!-- Button Section -->
+      <div class="button-section">
+        <!-- AMR Button -->
+        <button class="glow-on-hover white-border white-border-medium" onclick="location.href='/amr'">AMR Detection</button>
 
-    <!-- Virulence Button -->
-    <div class="button-wrapper virulence">
-      <button class="glow-on-hover white-border white-border-medium" onclick="location.href='/virulence'">Protein Virulence</button>
+        <!-- Virulence Button -->
+        <button class="glow-on-hover white-border white-border-medium" onclick="location.href='/virulence'">Protein Virulence</button>
+      </div>
     </div>
   </div>
 
-  <!-- Typing animation script -->
+  <!-- Typing Animation Script -->
   <script>
     const taglines = [
       "Decoding Resistance. Predicting Tomorrow.",

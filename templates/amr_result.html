@@ -1,0 +1,20 @@
+<!-- templates/amr_result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AMR Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='amr.css') }}">
+</head>
+<body>
+    <div class="amr-container">
+        <div class="input-box">
+            <h2>Prediction Result</h2>
+            <p style="font-size: 24px;">This gene is: <strong>{{ prediction }}</strong></p>
+            <p>Prediction: <strong>{{ prediction }}</strong></p>
+<a href="{{ url_for('amr_page') }}"><button>Test another sequence</button></a>
+
+        </div>
+    </div>
+</body>
+</html>

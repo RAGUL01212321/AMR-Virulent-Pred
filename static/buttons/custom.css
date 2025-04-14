@@ -1,0 +1,93 @@
+.custom-button {
+    position: relative;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    text-align: center;
+    font-family: 'Barlow', sans-serif;
+    display: inline-flex;
+    justify-content: center;
+    text-transform: uppercase;
+    font-size: 1rem;
+    color: white;
+    background: transparent;
+    border-radius: 0.5rem;
+    border: none;
+    transition: transform 0.3s ease-in-out;
+    outline-offset: 4px;
+    overflow: hidden;
+    margin: 10px;
+  }
+  
+  .custom-button .shimmer {
+    position: absolute;
+    left: -75%;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(12deg);
+    z-index: 10;
+    filter: blur(4px);
+    transition: all 1s ease-in-out;
+  }
+  
+  .custom-button:hover .shimmer {
+    left: 125%;
+  }
+  
+  .custom-button .border-tl,
+  .custom-button .border-tr,
+  .custom-button .border-bl,
+  .custom-button .border-br {
+    position: absolute;
+    display: block;
+    width: 50%;
+    border-color: #D4EDF9;
+    box-shadow: 0 0 10px rgba(212, 237, 249, 0.4);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .custom-button .border-tl {
+    height: 20%;
+    border-left: 2px solid;
+    border-top: 2px solid;
+    top: 0;
+    left: 0;
+    border-top-left-radius: 0.5rem;
+  }
+  
+  .custom-button .border-tr {
+    height: 60%;
+    border-right: 2px solid;
+    border-top: 2px solid;
+    top: 0;
+    right: 0;
+    border-top-right-radius: 0.5rem;
+  }
+  
+  .custom-button:hover .border-tr {
+    height: 90%;
+  }
+  
+  .custom-button .border-bl {
+    height: 60%;
+    border-left: 2px solid;
+    border-bottom: 2px solid;
+    bottom: 0;
+    left: 0;
+    border-bottom-left-radius: 0.5rem;
+  }
+  
+  .custom-button:hover .border-bl {
+    height: 90%;
+  }
+  
+  .custom-button .border-br {
+    height: 20%;
+    border-right: 2px solid;
+    border-bottom: 2px solid;
+    bottom: 0;
+    right: 0;
+    border-bottom-right-radius: 0.5rem;
+  }
+  
